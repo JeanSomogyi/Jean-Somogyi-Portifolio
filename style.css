@@ -408,7 +408,67 @@ h3 { font-size: 1.25rem; }
 }
 
 /* ---------- Responsivo ---------- */
+/* ---------- Elementos gráficos de fundo ---------- */
 
+.section { position: relative; overflow: hidden; }
+
+.section-graphic {
+  position: absolute;
+  z-index: 0;
+  color: var(--accent);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.section-graphic polyline,
+.section-graphic path,
+.section-graphic circle,
+.section-graphic line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.section-graphic .dot { fill: currentColor; stroke: none; }
+
+.section-graphic--trajetoria {
+  right: -6%;
+  top: 10%;
+  width: min(40vw, 520px);
+}
+
+.section-graphic--projetos {
+  left: -5%;
+  bottom: 6%;
+  width: min(34vw, 440px);
+}
+
+.section-graphic--competencias {
+  right: -8%;
+  top: 8%;
+  width: min(36vw, 460px);
+}
+
+.section-graphic--formacao {
+  left: -4%;
+  bottom: 4%;
+  width: min(30vw, 400px);
+}
+
+.section-graphic--contato {
+  left: 50%;
+  bottom: -12%;
+  transform: translateX(-50%);
+  width: min(70vw, 700px);
+  opacity: 0.1;
+}
+
+/* Garante que o conteúdo fique acima dos gráficos */
+.section > .container { position: relative; z-index: 1; }
+
+@media (max-width: 860px) {
+  .section-graphic { opacity: 0.08; }
+}
 @media (max-width: 860px) {
 
   /* Menu mobile */
