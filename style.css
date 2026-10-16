@@ -471,3 +471,49 @@ h3 { font-size: 1.25rem; }
 
   .hero-graphic { opacity: 0.12; }
 }
+/* ---------- Biblioteca de apresentações ---------- */
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.library-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 2.25rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.library-card:hover {
+  border-color: rgba(77, 124, 254, 0.45);
+  transform: translateY(-3px);
+}
+
+.library-tag {
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.library-card p:not(.library-tag) {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.library-link {
+  margin-top: auto;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease;
+}
+
+.library-link:hover { color: var(--accent); }
