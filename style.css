@@ -631,3 +631,135 @@ h3 { font-size: 1.25rem; }
 }
 
 .library-link:hover { color: var(--accent); }
+/* ---------- Estudos de caso — painéis de indicadores ---------- */
+
+.case-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem 2.75rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.kpi-value {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  line-height: 1;
+  color: var(--accent);
+}
+
+.kpi-label {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-bullets {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+}
+
+.case-bullets li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.case-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.8rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.case-visual { margin-top: auto; padding-top: 1.5rem; }
+
+/* Rosca */
+.donut-wrap { display: flex; align-items: center; gap: 1.5rem; }
+
+.donut {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) 0 7.3%, rgba(255, 255, 255, 0.08) 7.3% 100%);
+  flex-shrink: 0;
+}
+
+.donut::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.donut-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.donut-legend { display: grid; gap: 0.5rem; font-size: 0.85rem; color: var(--text-dim); }
+
+.donut-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  background: var(--accent);
+}
+
+.donut-legend span:last-child::before { background: rgba(255, 255, 255, 0.25); }
+
+/* Barras */
+.bar-list { display: grid; gap: 0.9rem; }
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 180px) 1fr auto;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.bar-name { color: var(--text-dim); font-size: 0.85rem; }
+
+.bar-track { height: 8px; background: rgba(255, 255, 255, 0.07); }
+
+.bar-fill { height: 100%; background: var(--accent); }
+
+.bar-fill--muted { background: rgba(77, 124, 254, 0.4); }
+
+.bar-value {
+  font-family: var(--serif);
+  color: var(--text);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Card largo (último estudo) */
+.case-card--wide { grid-column: 1 / -1; }
+
+@media (max-width: 860px) {
+  .case-card--wide { grid-column: auto; }
+  .bar-row { grid-template-columns: 1fr auto; }
+  .bar-name { grid-column: 1 / -1; }
+}
