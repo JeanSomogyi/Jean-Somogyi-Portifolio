@@ -763,3 +763,24 @@ h3 { font-size: 1.25rem; }
   .bar-row { grid-template-columns: 1fr auto; }
   .bar-name { grid-column: 1 / -1; }
 }
+
+
+/* ---------- Reforço dos gráficos no mobile ---------- */
+
+@media (max-width: 860px) {
+  .section-graphic { opacity: 0.2; }
+
+  .section-graphic--trajetoria,
+  .section-graphic--projetos,
+  .section-graphic--competencias,
+  .section-graphic--formacao { width: 60vw; }
+
+  .section-graphic--contato { width: 95vw; }
+
+  .section-graphic polyline,
+  .section-graphic path,
+  .section-graphic line,
+  .hero-graphic polyline { stroke-width: 3; }
+
+  .hero-graphic { opacity: 0.2; }
+}
