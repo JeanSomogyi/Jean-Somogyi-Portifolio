@@ -1,0 +1,787 @@
+/* ============================================================
+   JRS | Executive Portfolio — folha de estilos
+   Identidade: preto profundo, grafite, tipografia branca,
+   detalhes discretos em azul, muito espaço entre os elementos.
+   ============================================================ */
+
+:root {
+  --bg: #060608;
+  --bg-alt: #0c0c10;
+  --surface: #111117;
+  --text: #f4f4f6;
+  --text-dim: #93939e;
+  --accent: #4d7cfe;
+  --line: rgba(255, 255, 255, 0.08);
+  --serif: "Playfair Display", Georgia, serif;
+  --sans: "Inter", -apple-system, "Segoe UI", sans-serif;
+  --container: 1100px;
+  --section-pad: clamp(5rem, 12vh, 9rem);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5.5rem;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-weight: 300;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+
+img { display: block; max-width: 100%; }
+
+.container {
+  max-width: var(--container);
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
+
+/* ---------- Tipografia base ---------- */
+
+h1, h2, h3 {
+  font-family: var(--serif);
+  font-weight: 500;
+  line-height: 1.15;
+}
+
+h1 { font-size: clamp(2.75rem, 7vw, 4.75rem); letter-spacing: 0.01em; }
+h2 { font-size: clamp(1.9rem, 4vw, 2.75rem); margin-bottom: 1.25rem; }
+h3 { font-size: 1.25rem; }
+
+.eyebrow {
+  color: var(--accent);
+  font-size: 0.72rem;
+  font-weight: 500;
+  letter-spacing: 0.28em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.section-lead {
+  color: var(--text-dim);
+  max-width: 40rem;
+  margin-bottom: 3rem;
+}
+
+/* ---------- Cabeçalho ---------- */
+
+.site-header {
+  position: fixed;
+  inset: 0 0 auto 0;
+  z-index: 50;
+  background: rgba(6, 6, 8, 0.72);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--line);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  height: 4.5rem;
+}
+
+.brand {
+  font-family: var(--serif);
+  font-size: 1.35rem;
+  color: var(--text);
+  text-decoration: none;
+  letter-spacing: 0.04em;
+}
+
+.brand-dot { color: var(--accent); }
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  list-style: none;
+}
+
+.nav-links a {
+  color: var(--text-dim);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease;
+}
+
+.nav-links a:hover { color: var(--text); }
+
+.nav-links .nav-cta {
+  color: var(--text);
+  border: 1px solid var(--line);
+  padding: 0.5rem 1.1rem;
+  border-radius: 2px;
+}
+
+.nav-links .nav-cta:hover { border-color: var(--accent); }
+
+.nav-toggle { display: none; }
+
+/* ---------- Hero ---------- */
+
+.hero {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Elemento gráfico abstrato: linha ascendente (crescimento e resultados) */
+.hero-graphic {
+  position: absolute;
+  right: -4%;
+  bottom: 8%;
+  width: min(46vw, 620px);
+  color: var(--accent);
+  opacity: 0.22;
+}
+
+.hero-graphic polyline {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.2;
+}
+
+.hero-graphic circle { fill: currentColor; }
+
+.hero-inner { position: relative; }
+
+.hero-roles {
+  color: var(--text-dim);
+  font-size: 1.05rem;
+  letter-spacing: 0.04em;
+  margin-top: 1.5rem;
+}
+
+.hero-statement {
+  max-width: 34rem;
+  margin-top: 1.25rem;
+  font-family: var(--serif);
+  font-style: italic;
+  font-size: 1.2rem;
+}
+
+.btn {
+  display: inline-block;
+  margin-top: 2.75rem;
+  padding: 0.9rem 2.2rem;
+  border: 1px solid var(--line);
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: border-color 0.3s ease, background 0.3s ease;
+}
+
+.btn:hover {
+  border-color: var(--accent);
+  background: rgba(77, 124, 254, 0.06);
+}
+
+/* ---------- Seções ---------- */
+
+.section { padding: var(--section-pad) 0; }
+
+.section-alt { background: var(--bg-alt); }
+
+/* ---------- Sobre mim ---------- */
+
+.about {
+  display: grid;
+  grid-template-columns: minmax(260px, 380px) 1fr;
+  gap: clamp(2.5rem, 6vw, 5.5rem);
+  align-items: center;
+}
+
+.about-photo { position: relative; }
+
+.about-photo img {
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  object-position: center 22%;
+  filter: grayscale(15%) contrast(1.05);
+}
+
+/* Vinheta: o fundo cinza da foto transiciona para o preto do site */
+.about-photo::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(ellipse at center, transparent 45%, var(--bg) 100%);
+  pointer-events: none;
+}
+
+/* Moldura deslocada — detalhe editorial discreto */
+.about-photo::after {
+  content: "";
+  position: absolute;
+  inset: 1.25rem -1.25rem -1.25rem 1.25rem;
+  border: 1px solid rgba(77, 124, 254, 0.35);
+  z-index: -1;
+}
+
+.about-text p + p { margin-top: 1.25rem; }
+
+/* ---------- Trajetória (linha do tempo) ---------- */
+
+.timeline {
+  list-style: none;
+  margin-top: 3.5rem;
+  border-left: 1px solid var(--line);
+  padding-left: 2.5rem;
+  display: grid;
+  gap: 3.5rem;
+}
+
+.timeline-item { position: relative; }
+
+.timeline-item::before {
+  content: "";
+  position: absolute;
+  left: -2.5rem;
+  top: 0.4rem;
+  transform: translateX(-50%);
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: var(--bg-alt);
+  border: 1px solid var(--accent);
+}
+
+.timeline-period {
+  color: var(--accent);
+  font-size: 0.75rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+}
+
+.timeline-item h3 { margin-top: 0.5rem; }
+
+.timeline-company {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin: 0.2rem 0 0.75rem;
+}
+
+.timeline-item p:last-child {
+  color: var(--text-dim);
+  max-width: 40rem;
+}
+
+/* ---------- Estados vazios (projetos e biblioteca) ---------- */
+
+.empty-state {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 3rem;
+  max-width: 44rem;
+}
+
+.empty-title {
+  font-family: var(--serif);
+  font-size: 1.15rem;
+  margin-bottom: 0.6rem;
+}
+
+.empty-state p:last-child {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+/* ---------- Competências ---------- */
+
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.skill-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 2.25rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.skill-card:hover {
+  border-color: rgba(77, 124, 254, 0.45);
+  transform: translateY(-3px);
+}
+
+.skill-card p {
+  color: var(--text-dim);
+  margin-top: 0.75rem;
+  font-size: 0.95rem;
+}
+
+/* ---------- Formação ---------- */
+
+.edu-list {
+  list-style: none;
+  margin-top: 3rem;
+}
+
+.edu-list li {
+  padding: 1.75rem 0;
+  border-bottom: 1px solid var(--line);
+}
+
+.edu-list li:first-child { border-top: 1px solid var(--line); }
+
+.edu-list p {
+  color: var(--text-dim);
+  font-size: 0.9rem;
+  margin-top: 0.3rem;
+}
+
+/* ---------- Contato ---------- */
+
+.contact-inner { text-align: center; }
+
+.contact-inner h2 { margin-bottom: 3rem; }
+
+.contact-link {
+  display: block;
+  width: fit-content;
+  margin: 0 auto 1.25rem;
+  font-family: var(--serif);
+  font-size: clamp(1.3rem, 3vw, 1.9rem);
+  color: var(--text);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.contact-link:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
+
+.contact-link--muted {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-dim);
+}
+
+/* ---------- Rodapé ---------- */
+
+.site-footer {
+  border-top: 1px solid var(--line);
+  padding: 2.5rem 0;
+}
+
+.footer-inner {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  color: var(--text-dim);
+  font-size: 0.8rem;
+  letter-spacing: 0.06em;
+}
+
+/* ---------- Animação de revelação ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- Responsivo ---------- */
+/* ---------- Elementos gráficos de fundo ---------- */
+
+.section { position: relative; overflow: hidden; }
+
+.section-graphic {
+  position: absolute;
+  z-index: 0;
+  color: var(--accent);
+  opacity: 0.14;
+  pointer-events: none;
+}
+
+.section-graphic polyline,
+.section-graphic path,
+.section-graphic circle,
+.section-graphic line {
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1;
+}
+
+.section-graphic .dot { fill: currentColor; stroke: none; }
+
+.section-graphic--trajetoria {
+  right: -6%;
+  top: 10%;
+  width: min(40vw, 520px);
+}
+
+.section-graphic--projetos {
+  left: -5%;
+  bottom: 6%;
+  width: min(34vw, 440px);
+}
+
+.section-graphic--competencias {
+  right: -8%;
+  top: 8%;
+  width: min(36vw, 460px);
+}
+
+.section-graphic--formacao {
+  left: -4%;
+  bottom: 4%;
+  width: min(30vw, 400px);
+}
+
+.section-graphic--contato {
+  left: 50%;
+  bottom: -12%;
+  transform: translateX(-50%);
+  width: min(70vw, 700px);
+  opacity: 0.1;
+}
+
+/* Garante que o conteúdo fique acima dos gráficos */
+.section > .container { position: relative; z-index: 1; }
+/* ---------- Estudos de caso ---------- */
+
+.cases-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.case-card {
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.case-card:hover {
+  border-color: rgba(77, 124, 254, 0.45);
+  transform: translateY(-3px);
+}
+
+.case-tag {
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.case-card h3 { font-size: 1.3rem; }
+
+.case-card p:not(.case-tag) {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.case-label {
+  color: var(--text);
+  font-weight: 500;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.case-result {
+  border-top: 1px solid var(--line);
+  padding-top: 1.1rem;
+  margin-top: auto;
+}
+
+@media (max-width: 860px) {
+  .cases-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 860px) {
+  .section-graphic { opacity: 0.08; }
+}
+@media (max-width: 860px) {
+
+  /* Menu mobile */
+  .nav-toggle {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    background: none;
+    border: 0;
+    padding: 0.5rem;
+    cursor: pointer;
+  }
+
+  .nav-toggle span {
+    width: 22px;
+    height: 1px;
+    background: var(--text);
+  }
+
+  .nav-links {
+    position: fixed;
+    inset: 4.5rem 0 auto 0;
+    flex-direction: column;
+    gap: 0;
+    background: rgba(6, 6, 8, 0.97);
+    border-bottom: 1px solid var(--line);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease;
+  }
+
+  .nav-links.open { max-height: 60vh; }
+
+  .nav-links li { width: 100%; text-align: center; }
+
+  .nav-links a {
+    display: block;
+    padding: 1.1rem 0;
+    font-size: 0.95rem;
+  }
+
+  .nav-links .nav-cta { border: 0; padding: 1.1rem 0; }
+
+  /* Sobre mim: foto acima do texto */
+  .about { grid-template-columns: 1fr; }
+
+  .about-photo {
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .about-photo::after { display: none; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .footer-inner {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .hero-graphic { opacity: 0.12; }
+}
+/* ---------- Biblioteca de apresentações ---------- */
+
+.library-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+
+.library-card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  padding: 2.25rem;
+  transition: border-color 0.3s ease, transform 0.3s ease;
+}
+
+.library-card:hover {
+  border-color: rgba(77, 124, 254, 0.45);
+  transform: translateY(-3px);
+}
+
+.library-tag {
+  color: var(--accent);
+  font-size: 0.7rem;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+}
+
+.library-card p:not(.library-tag) {
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.library-link {
+  margin-top: auto;
+  color: var(--text);
+  text-decoration: none;
+  font-size: 0.9rem;
+  letter-spacing: 0.06em;
+  transition: color 0.3s ease;
+}
+
+.library-link:hover { color: var(--accent); }
+/* ---------- Estudos de caso — painéis de indicadores ---------- */
+
+.case-kpis {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.75rem 2.75rem;
+  padding: 1.5rem 0;
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.kpi { display: flex; flex-direction: column; gap: 0.35rem; }
+
+.kpi-value {
+  font-family: var(--serif);
+  font-size: clamp(1.9rem, 3.2vw, 2.6rem);
+  line-height: 1;
+  color: var(--accent);
+}
+
+.kpi-label {
+  color: var(--text-dim);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.case-bullets {
+  list-style: none;
+  display: grid;
+  gap: 0.7rem;
+  margin: 0;
+  padding: 0;
+}
+
+.case-bullets li {
+  position: relative;
+  padding-left: 1.4rem;
+  color: var(--text-dim);
+  font-size: 0.95rem;
+}
+
+.case-bullets li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.65em;
+  width: 0.8rem;
+  height: 1px;
+  background: var(--accent);
+}
+
+.case-visual { margin-top: auto; padding-top: 1.5rem; }
+
+/* Rosca */
+.donut-wrap { display: flex; align-items: center; gap: 1.5rem; }
+
+.donut {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  border-radius: 50%;
+  background: conic-gradient(var(--accent) 0 7.3%, rgba(255, 255, 255, 0.08) 7.3% 100%);
+  flex-shrink: 0;
+}
+
+.donut::before {
+  content: "";
+  position: absolute;
+  inset: 14px;
+  border-radius: 50%;
+  background: var(--surface);
+}
+
+.donut-center {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  z-index: 1;
+  font-family: var(--serif);
+  font-size: 1.2rem;
+  color: var(--text);
+}
+
+.donut-legend { display: grid; gap: 0.5rem; font-size: 0.85rem; color: var(--text-dim); }
+
+.donut-legend span::before {
+  content: "";
+  display: inline-block;
+  width: 0.6rem;
+  height: 0.6rem;
+  border-radius: 50%;
+  margin-right: 0.5rem;
+  background: var(--accent);
+}
+
+.donut-legend span:last-child::before { background: rgba(255, 255, 255, 0.25); }
+
+/* Barras */
+.bar-list { display: grid; gap: 0.9rem; }
+
+.bar-row {
+  display: grid;
+  grid-template-columns: minmax(130px, 180px) 1fr auto;
+  gap: 0.9rem;
+  align-items: center;
+}
+
+.bar-name { color: var(--text-dim); font-size: 0.85rem; }
+
+.bar-track { height: 8px; background: rgba(255, 255, 255, 0.07); }
+
+.bar-fill { height: 100%; background: var(--accent); }
+
+.bar-fill--muted { background: rgba(77, 124, 254, 0.4); }
+
+.bar-value {
+  font-family: var(--serif);
+  color: var(--text);
+  font-size: 0.95rem;
+  white-space: nowrap;
+}
+
+/* Card largo (último estudo) */
+.case-card--wide { grid-column: 1 / -1; }
+
+@media (max-width: 860px) {
+  .case-card--wide { grid-column: auto; }
+  .bar-row { grid-template-columns: 1fr auto; }
+  .bar-name { grid-column: 1 / -1; }
+}
+
+
+/* ---------- Reforço dos gráficos no mobile ---------- */
+
+@media (max-width: 860px) {
+  .section-graphic { opacity: 0.2; }
+
+  .section-graphic--trajetoria,
+  .section-graphic--projetos,
+  .section-graphic--competencias,
+  .section-graphic--formacao { width: 60vw; }
+
+  .section-graphic--contato { width: 95vw; }
+
+  .section-graphic polyline,
+  .section-graphic path,
+  .section-graphic line,
+  .hero-graphic polyline { stroke-width: 5; }
+
+  .hero-graphic { opacity: 0.35; }
+}
