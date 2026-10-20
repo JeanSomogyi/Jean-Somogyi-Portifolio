@@ -785,3 +785,22 @@ h3 { font-size: 1.25rem; }
 
   .hero-graphic { opacity: 0.35; }
 }
+/* ---------- Card em destaque (estudo de caso principal) ---------- */
+
+.case-card--featured {
+  grid-column: 1 / -1;
+  border-color: rgba(77, 124, 254, 0.35);
+}
+
+.case-card--featured .case-kpis {
+  gap: 2.5rem 4rem;
+  padding: 2rem 0;
+}
+
+.case-card--featured .kpi-value {
+  font-size: clamp(2.4rem, 4.5vw, 3.6rem);
+}
+
+@media (max-width: 860px) {
+  .case-card--featured { grid-column: auto; }
+}
