@@ -804,3 +804,27 @@ h3 { font-size: 1.25rem; }
 @media (max-width: 860px) {
   .case-card--featured { grid-column: auto; }
 }
+/* ---------- Biblioteca: múltiplas ações por card ---------- */
+
+.library-actions {
+  margin-top: auto;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1.25rem;
+}
+
+.library-actions .library-link { margin-top: 0; }
+
+.library-link--download {
+  color: var(--text-dim);
+  font-size: 0.82rem;
+  border: 1px solid var(--line);
+  padding: 0.45rem 0.9rem;
+  border-radius: 2px;
+}
+
+.library-link--download:hover {
+  color: var(--accent);
+  border-color: var(--accent);
+}
